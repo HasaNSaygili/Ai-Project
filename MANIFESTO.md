@@ -157,7 +157,7 @@ In accordance with the academic integrity requirements of this assignment, all A
 | **Groq API** (inference endpoint) | Fast LLM inference hosting |
 | **Llama-3.1-8b-instant** (Meta) | Generates the personalized poem from the user's emotional journey map |
 | **Web Speech API** (browser-native) | Text-to-speech synthesis for reading the poem aloud |
-| **Web Audio API** (browser-native) | Procedural audio: 5-layer harmonic drone, Karplus-Strong string synthesis, convolution reverb |
+| **Web Audio API** (browser-native) | 5-layer harmonic drone (A0 sub-bass → A3 shimmer) through 10-second convolution reverb; creates the cathedral acoustic space beneath the voice |
 
 No generative AI tool was used to write this manifesto or to design the creative concept. All architectural decisions, the question bank, the door anchor texts, the LLM system prompt, and the philosophical framing of the experience are original work.
 

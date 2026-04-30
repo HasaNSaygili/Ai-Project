@@ -3,11 +3,14 @@ ECHOES ON THE THRESHOLD — app.py
 Flask Backend · CSE 358 AI Project
 
 AI PIPELINE:
-  1. Groq API → Llama-3.1-8b → poem (Dylan/Cohen style, inspired by the journey)
-  2. Flask serves the poem → frontend displays + reads aloud via SpeechSynthesis
+  1. NLP  → TF.js Universal Sentence Encoder (frontend) → 512-dim embeddings
+             → cosine similarity → door selection + full score distribution
+  2. LLM  → Groq API / Llama-3.1-8b → personalized poem from journey + NLP scores
+  3. TTS  → Web Speech API (frontend) reads poem aloud
 
 HOW TO RUN:
   pip install -r requirements.txt
+  set GROQ_API_KEY=your_key   (or add to .env file)
   python app.py
   → http://localhost:5000
 """
@@ -15,8 +18,10 @@ HOW TO RUN:
 import os
 import json
 import requests
+from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
 
-# Load .env file if present (local development — never committed to git)
+# Load .env file if present (local dev — .env is in .gitignore, never committed)
 try:
     with open(os.path.join(os.path.dirname(__file__), '.env')) as f:
         for line in f:
@@ -26,8 +31,6 @@ try:
                 os.environ.setdefault(k.strip(), v.strip())
 except FileNotFoundError:
     pass
-from flask import Flask, request, jsonify, send_from_directory
-from flask_cors import CORS
 
 app = Flask(__name__, static_folder='.', static_url_path='')
 CORS(app)
@@ -132,10 +135,7 @@ def generate_with_llm(choices: list) -> dict:
         raise RuntimeError(f"Groq API {resp.status_code}: {resp.text}")
 
     data = json.loads(resp.json()["choices"][0]["message"]["content"])
-    return {
-        "poem":  data.get("poem",  "Some echoes never reach the door they came from."),
-        "scene": data.get("scene", "A lone figure standing in a dark doorway, candlelight, fog"),
-    }
+    return data.get("poem", "Some echoes never reach the door they came from.")
 
 
 # ── FLASK ROUTES ──────────────────────────────────────────────────────────────
@@ -162,8 +162,8 @@ def generate():
         return jsonify({"error": "Exactly 3 choices required"}), 400
 
     try:
-        result = generate_with_llm(choices)
-        return jsonify({"poem": result["poem"], "scene": result.get("scene", "")})
+        poem = generate_with_llm(choices)
+        return jsonify({"poem": poem})
 
     except Exception as exc:
         app.logger.error("Generation failed: %s", exc)

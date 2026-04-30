@@ -40,8 +40,7 @@ At the end, a large language model — trained on the full weight of human langu
 [Frontend / JavaScript]
   Poem displayed with pre-line formatting
   Web Speech API TTS (pitch=0.1, rate=0.65)
-  Web Audio API — 5-layer drone ambience
-  Karplus-Strong string synthesis (ambient fallback)
+  Web Audio API — 5-layer drone ambience (A0–A3, convolution reverb)
 ```
 
 ### How the AI components interact
@@ -64,7 +63,7 @@ The LLM reads this map and writes a poem that reflects not just the dominant emo
 | **Semantic Embedding + Cosine Similarity** | TensorFlow.js Universal Sentence Encoder (512-dim) | Maps user answers to symbolic emotional space; selects which door opens |
 | **Large Language Model (Generative)** | Groq API / Llama-3.1-8b-instant | Reads the emotional journey map and generates a personalized poem in Dylan's 1973 voice |
 | **Text-to-Speech Synthesis** | Web Speech API (browser-native) | Reads the poem aloud in a deep, slow, reverberant voice |
-| **Procedural Audio Synthesis** | Web Audio API | 5-layer drone ambience (A0–A3) + Karplus-Strong string synthesis for atmospheric sound design |
+| **Procedural Audio Synthesis** | Web Audio API | 5-layer harmonic drone (A0–A3) with convolution reverb; underlies the godlike TTS voice |
 
 ---
 
