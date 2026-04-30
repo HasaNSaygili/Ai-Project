@@ -15,6 +15,17 @@ HOW TO RUN:
 import os
 import json
 import requests
+
+# Load .env file if present (local development — never committed to git)
+try:
+    with open(os.path.join(os.path.dirname(__file__), '.env')) as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith('#') and '=' in line:
+                k, v = line.split('=', 1)
+                os.environ.setdefault(k.strip(), v.strip())
+except FileNotFoundError:
+    pass
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 

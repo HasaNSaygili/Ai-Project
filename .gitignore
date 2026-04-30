@@ -23,8 +23,6 @@ instance/
 # Generated files (temp images and audio from HF/Pollinations)
 generated/
 
-# User-supplied audio (not committed — see README)
-audio/dylan_cover.mp3
 
 # Assignment PDF (professor's document)
 *.pdf

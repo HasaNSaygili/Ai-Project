@@ -151,6 +151,17 @@ The NLP model computes cosine similarity between the user's answer embedding and
 
 ---
 
+## Screenshots
+
+| | |
+|---|---|
+| ![Intro](screenshots/01-intro.png) | ![Corridor](screenshots/02-corridor.png) |
+| ![Question](screenshots/03-question.png) | ![Doors](screenshots/04-doors.png) |
+
+![Final](screenshots/05-final.png)
+
+---
+
 ## Example Output
 
 **User journey:**
