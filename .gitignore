@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# Environment variables / API keys
+.env
+.env.local
+*.env
+
+# Flask
+instance/
+*.db
+
+# Generated files (temp images and audio from HF/Pollinations)
+generated/
+
+# User-supplied audio (not committed — see README)
+audio/dylan_cover.mp3
+
+# Assignment PDF (professor's document)
+*.pdf
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+flask.log
+
+# Distribution
+dist/
+build/
+*.egg-info/
