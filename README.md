@@ -5,6 +5,9 @@
 
 An interactive web experience inspired by Bob Dylan's 1973 composition. The user knocks on a door, answers three philosophical questions spoken by a godlike voice, and receives a personalized poem written by an AI in Dylan's voice — then read aloud as the final revelation.
 
+**Live demo:** https://echoes-on-the-threshold.onrender.com/
+> *First load may take 30–60 seconds (free tier cold start). Subsequent visits are instant.*
+
 ---
 
 ## Artistic Statement
